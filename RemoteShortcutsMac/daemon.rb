@@ -22,13 +22,13 @@ class Daemon
 
       while true
          Thread.start(gs.accept) do |s|       # save to dynamic variable
-            print(s, " is accepted¥n")
+            print(s, " is accepted\n")
             while s.gets
                case $_
-                  when 'C'
+                  when /^C/
                      copy
-                  when 'V'
-                     paste
+                  when /^V/
+                     Zpaste
                   else
                      do_nothing
                end
@@ -38,5 +38,22 @@ class Daemon
             s.close
          end
       end
+   end
+
+   def copy
+      puts 'copy'
+      url = NSURL::URLWithString('http://localhost')
+       puts 'copy half'
+      tc = OSX::TCallScript.alloc.initWithURLToCompiledScript(url)
+
+       puts 'copy done'
+   end
+
+   def paste
+      puts 'paste'
+   end
+
+   def do_nothing
+      puts 'do_nothing'
    end
 end # Daemon

@@ -16,6 +16,8 @@
 		922CC2480FCD9D62005B2A92 /* daemon.rb in Resources */ = {isa = PBXBuildFile; fileRef = 922CC2470FCD9D62005B2A92 /* daemon.rb */; };
 		922CC2720FCDA182005B2A92 /* TCallScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 922CC2700FCDA182005B2A92 /* TCallScript.h */; };
 		922CC2730FCDA182005B2A92 /* TCallScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 922CC2710FCDA182005B2A92 /* TCallScript.m */; };
+		922CC27E0FCDA69C005B2A92 /* AEDescUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */; };
+		922CC27F0FCDA69C005B2A92 /* AEDescUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		922CC2470FCD9D62005B2A92 /* daemon.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = daemon.rb; sourceTree = "<group>"; };
 		922CC2700FCDA182005B2A92 /* TCallScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCallScript.h; sourceTree = "<group>"; };
 		922CC2710FCDA182005B2A92 /* TCallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCallScript.m; sourceTree = "<group>"; };
+		922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEDescUtils.h; sourceTree = "<group>"; };
+		922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEDescUtils.m; sourceTree = "<group>"; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +55,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */,
+				922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */,
 				922CC2700FCDA182005B2A92 /* TCallScript.h */,
 				922CC2710FCDA182005B2A92 /* TCallScript.m */,
 				922CC2470FCD9D62005B2A92 /* daemon.rb */,
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				922CC2720FCDA182005B2A92 /* TCallScript.h in Headers */,
+				922CC27E0FCDA69C005B2A92 /* AEDescUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +203,7 @@
 			files = (
 				4DDCA70A0ACC9A6100E082CE /* main.m in Sources */,
 				922CC2730FCDA182005B2A92 /* TCallScript.m in Sources */,
+				922CC27F0FCDA69C005B2A92 /* AEDescUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
