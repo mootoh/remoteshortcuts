@@ -11,6 +11,11 @@ class Daemon
    PORT = 12345
 
    def initialize
+      bundle = OSX::NSBundle::mainBundle;
+      path = bundle.pathForResource_ofType("ShortcutHandler", "scpt")
+      script_url = OSX::NSURL.alloc.initFileURLWithPath(path)
+      @tc = OSX::TCallScript.alloc.initWithURLToCompiledScript(script_url)
+
       Thread.new { start_thread }
    end
 
@@ -23,12 +28,13 @@ class Daemon
       while true
          Thread.start(gs.accept) do |s|       # save to dynamic variable
             print(s, " is accepted\n")
-            while s.gets
-               case $_
+            while msg = s.gets
+               puts "got: " + msg + "---" + msg.size.to_s
+               case msg
                   when /^C/
                      copy
                   when /^V/
-                     Zpaste
+                     paste
                   else
                      do_nothing
                end
@@ -41,15 +47,11 @@ class Daemon
    end
 
    def copy
-      bundle = OSX::NSBundle::mainBundle;
-      path = bundle.pathForResource_ofType("ShortcutHandler", "scpt")
-      script_url = OSX::NSURL.alloc.initFileURLWithPath(path)
-      tc = OSX::TCallScript.alloc.initWithURLToCompiledScript(script_url)
-      tc.callHandler_withParameters("ShortuctCopy", nil)
+      @tc.callHandler_withParameters("ShortcutCopy", nil)
    end
 
    def paste
-      puts 'paste'
+      @tc.callHandler_withParameters("ShortcutPaste", nil)
    end
 
    def do_nothing
