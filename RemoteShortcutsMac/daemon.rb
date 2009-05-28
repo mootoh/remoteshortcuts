@@ -41,12 +41,11 @@ class Daemon
    end
 
    def copy
-      puts 'copy'
-      url = NSURL::URLWithString('http://localhost')
-       puts 'copy half'
-      tc = OSX::TCallScript.alloc.initWithURLToCompiledScript(url)
-
-       puts 'copy done'
+      bundle = OSX::NSBundle::mainBundle;
+      path = bundle.pathForResource_ofType("ShortcutHandler", "scpt")
+      script_url = OSX::NSURL.alloc.initFileURLWithPath(path)
+      tc = OSX::TCallScript.alloc.initWithURLToCompiledScript(script_url)
+      tc.callHandler_withParameters("ShortuctCopy", nil)
    end
 
    def paste
