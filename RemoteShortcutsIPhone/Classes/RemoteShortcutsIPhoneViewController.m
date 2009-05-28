@@ -6,6 +6,8 @@
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
+#define MAC_PORT @"192.168.1.103" // TODO: obtain it from Bonjour
+
 #import "RemoteShortcutsIPhoneViewController.h"
 
 @implementation RemoteShortcutsIPhoneViewController
@@ -14,7 +16,7 @@
 {
    NSLog(@"current host = %@", [[NSHost currentHost] address]);
    
-   NSHost *host = [NSHost hostWithAddress:@"192.168.1.103"];
+   NSHost *host = [NSHost hostWithAddress:MAC_PORT];
    // iStream and oStream are instance variables
    [NSStream getStreamsToHost:host port:12345 inputStream:&istream
                  outputStream:&ostream];
