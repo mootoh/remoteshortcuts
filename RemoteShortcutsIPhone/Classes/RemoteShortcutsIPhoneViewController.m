@@ -6,20 +6,14 @@
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
-#define MAC_PORT @"192.168.1.103" // TODO: obtain it from Bonjour
-
 #import "RemoteShortcutsIPhoneViewController.h"
 
 @implementation RemoteShortcutsIPhoneViewController
 
 - (void) setupStreams
 {
-   NSLog(@"current host = %@", [[NSHost currentHost] address]);
-   
-   NSHost *host = [NSHost hostWithAddress:MAC_PORT];
-   // iStream and oStream are instance variables
-   [NSStream getStreamsToHost:host port:12345 inputStream:&istream
-                 outputStream:&ostream];
+   NSNetService * clickedService = [services objectAtIndex:0];
+   [clickedService getInputStream:&istream outputStream:&ostream];
    [istream retain];
    [ostream retain];
    [istream setDelegate:self];
@@ -32,6 +26,49 @@
    [ostream open];
 }
 
+- (void) findPeers
+{
+   browser = [[NSNetServiceBrowser alloc] init];
+   services = [[NSMutableArray array] retain];
+   [browser setDelegate:self];
+   
+   // Passing in "" for the domain causes us to browse in the default browse domain
+   [browser searchForServicesOfType:@"_wwdcpic._tcp." inDomain:@""];
+   //[hostNameField setStringValue:@""];
+}
+
+// This object is the delegate of its NSNetServiceBrowser object. We're only interested in services-related methods, so that's what we'll call.
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+   NSLog(@"didFind");
+   aNetService.delegate = self;
+   [services addObject:aNetService];
+   [aNetService resolveWithTimeout:5.0];
+   
+   if(!moreComing) {
+      //[pictureServiceList reloadData];
+   }
+}
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+   NSLog(@"didRemove");
+   [services removeObject:aNetService];
+   aNetService.delegate = nil;
+   
+   if(!moreComing) {
+      //[pictureServiceList reloadData];        
+   }
+}
+
+- (void) netServiceDidResolveAddress:(NSNetService *)sender
+{
+   NSLog(@"revoled");
+}
+
+- (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
+{
+   NSLog(@"did not revoled");
+}
+   
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -52,7 +89,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
    [super viewDidLoad];
-   [self setupStreams];
+   [self findPeers];
 }
 
 
@@ -118,6 +155,11 @@
       }
          // continued ...
    }
+}
+
+- (IBAction) setupPeers
+{
+   [self setupStreams];   
 }
 
 @end
