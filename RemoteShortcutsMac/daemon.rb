@@ -10,7 +10,7 @@ require "socket"
 class Daemon < OSX::NSObject
    DAEMON_PORT  = 12345
    
-   ib_outlet :menus
+   ib_outlet :menus, :window, :customize_field
 
    def quit(sender)
       OSX::NSApplication.sharedApplication.terminate nil
@@ -32,8 +32,19 @@ class Daemon < OSX::NSObject
       @is_working = ! @is_working;
    end
 
+   def open_customize_window(sender)
+   	@window.makeKeyAndOrderFront self
+   end
+   
+   def customize_shortcuts(sender)
+      @customize_field.setStringValue 'press shortcut keys'
+      @customize_field.becomeFirstResponder
+   end
+
    ib_action :quit
    ib_action :toggle
+   ib_action :open_customize_window
+   ib_action :customize_shortcuts
 
    def icon_images
       unless @s_icon_images
@@ -51,6 +62,7 @@ class Daemon < OSX::NSObject
 
    def applicationDidFinishLaunching(notification)
       @is_working = true
+      @window.setReleasedWhenClosed false
 
       bar = OSX::NSStatusBar.systemStatusBar
       @menu = bar.statusItemWithLength(24).retain
