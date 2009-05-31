@@ -69,10 +69,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */,
-				922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */,
-				922CC2700FCDA182005B2A92 /* TCallScript.h */,
-				922CC2710FCDA182005B2A92 /* TCallScript.m */,
 				922CC2470FCD9D62005B2A92 /* daemon.rb */,
 			);
 			name = Classes;
@@ -107,6 +103,7 @@
 		29B97314FDCFA39411CA2CEA /* RemoteShortcutsMac */ = {
 			isa = PBXGroup;
 			children = (
+				B9ECD7E70FD260D3005AF57C /* AppleScript */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -121,7 +118,6 @@
 			children = (
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
-				922CC2410FCD9C6F005B2A92 /* ShortcutHandler.scpt */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -143,6 +139,18 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9ECD7E70FD260D3005AF57C /* AppleScript */ = {
+			isa = PBXGroup;
+			children = (
+				922CC2410FCD9C6F005B2A92 /* ShortcutHandler.scpt */,
+				922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */,
+				922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */,
+				922CC2700FCDA182005B2A92 /* TCallScript.h */,
+				922CC2710FCDA182005B2A92 /* TCallScript.m */,
+			);
+			name = AppleScript;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

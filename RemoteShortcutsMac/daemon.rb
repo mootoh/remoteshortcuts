@@ -9,8 +9,39 @@ require "socket"
 
 class Daemon < OSX::NSObject
    DAEMON_PORT  = 12345
+   
+   ib_outlet :menus
 
-   def init
+   def quit(sender)
+      OSX::NSApplication.sharedApplication.terminate nil
+   end
+
+   def toggle(sender)
+      if @is_working
+         @menu.setTitle 'OFF'
+         @menu.setToolTip 'RemoteShortcuts is OFF'
+         sender.setTitle 'ON'
+      else
+         @menu.setTitle 'ON'
+         @menu.setToolTip 'RemoteShortcuts is ON'
+         sender.setTitle 'OFF'
+      end
+      @is_working = ! @is_working;
+   end
+
+   ib_action :quit
+   ib_action :toggle
+
+   def applicationDidFinishLaunching(notification)
+      @is_working = true
+
+      bar = OSX::NSStatusBar.systemStatusBar
+      @menu = bar.statusItemWithLength(OSX::NSVariableStatusItemLength).retain
+      @menu.setTitle('RemoteShortcuts')
+      @menu.setToolTip('Hello!')
+      @menu.setHighlightMode true
+      @menu.setMenu @menus
+
       bundle = OSX::NSBundle::mainBundle;
       path = bundle.pathForResource_ofType("ShortcutHandler", "scpt")
       script_url = OSX::NSURL.alloc.initFileURLWithPath(path)
@@ -20,21 +51,17 @@ class Daemon < OSX::NSObject
       @net_service.setDelegate(self)
       @net_service.publish
 
-      start_thread
+      Thread.new { start_daemon_thread }
    end
    
-
-   def start_thread
+   def start_daemon_thread
       gs = TCPServer.open(DAEMON_PORT)
       addr = gs.addr
       addr.shift
-      printf("server is on %s\n", addr.join(":"))
 
       while true
          Thread.start(gs.accept) do |s|       # save to dynamic variable
-            print(s, " is accepted\n")
             while msg = s.gets
-               puts "got: " + msg + "---" + msg.size.to_s
                case msg
                   when /^C/
                      copy
@@ -45,7 +72,6 @@ class Daemon < OSX::NSObject
                end
                s.write($_)
             end
-            print(s, " is gone¥n")
             s.close
          end
       end
@@ -60,15 +86,12 @@ class Daemon < OSX::NSObject
    end
 
    def do_nothing
-      puts 'do_nothing'
    end
 
    def netServiceWillPublish(sender)
-      puts 'netServiceWillPublish called'
    end
    
    def netService_didNotPublish(sender, errorDict)
-      puts 'didNotPublish called'
       if errorDict[OSX::NSNetServicesErrorCode].to_i == OSX::NSNetServicesCollisionError
          puts 'A name collision occurred. A service is already running with that name someplace else.'
       else
@@ -79,8 +102,6 @@ class Daemon < OSX::NSObject
    end
    
    def netServiceDidStop(sender)
-      puts 'netServiceDidStop called'
       @net_service = nil
    end
-
 end # Daemon

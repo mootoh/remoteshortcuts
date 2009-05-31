@@ -16,7 +16,7 @@ def rb_main_init
     require( File.basename(path) )
   end
   
-  daemon = Daemon.alloc.init
+  #daemon = Daemon.alloc.init
 end
 
 if $0 == __FILE__ then
