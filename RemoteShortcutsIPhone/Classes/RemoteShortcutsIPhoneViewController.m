@@ -33,8 +33,18 @@
    [self setupStreams];
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+   [super viewWillDisappear:animated];
+   [istream close];
+   [ostream close];
+   [service stop];
+}
+
 - (void)dealloc
 {
+   if (istream) [istream release];
+   if (ostream) [ostream release];
    [super dealloc];
 }
 
@@ -42,14 +52,16 @@
 {
    uint8_t buf[] = "C\n";
    NSInteger wrote = [ostream write:buf maxLength:2];
-   NSLog(@"copy wrote = %d", wrote);
+   if (wrote != 2)
+      NSLog(@"something wrong is happened at copy");
 }
 
 - (IBAction) shortcutPaste
 {
    uint8_t buf[] = "V\n";
    NSInteger wrote = [ostream write:buf maxLength:2];
-   NSLog(@"paste wrote = %d", wrote);
+   if (wrote != 2)
+      NSLog(@"something wrong is happened at paste");
 }
 
 @end

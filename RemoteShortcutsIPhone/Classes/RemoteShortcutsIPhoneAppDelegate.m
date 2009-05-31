@@ -51,8 +51,8 @@
 }   
 
 // This object is the delegate of its NSNetServiceBrowser object. We're only interested in services-related methods, so that's what we'll call.
-- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-   NSLog(@"didFind");
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
+{
    aNetService.delegate = self;
    [services addObject:aNetService];
    [aNetService resolveWithTimeout:5.0];
@@ -60,11 +60,17 @@
    [self updatePeers];
 }
 
-- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-   NSLog(@"didRemove");
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
+{
    [services removeObject:aNetService];
    aNetService.delegate = nil;
 
+   if ([navigationController.topViewController isKindOfClass:[RemoteShortcutsIPhoneViewController class]]) {
+      RemoteShortcutsIPhoneViewController *rsipvc = (RemoteShortcutsIPhoneViewController *)navigationController.topViewController;
+      if ([aNetService isEqual:rsipvc.service]) {
+         [navigationController popViewControllerAnimated:YES];
+      }
+   }
    [self updatePeers];
 }
 
