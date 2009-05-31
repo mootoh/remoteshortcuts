@@ -9,28 +9,28 @@
 #import "RemoteShortcutsIPhoneViewController.h"
 
 @implementation RemoteShortcutsIPhoneViewController
-   
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+@synthesize service;
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+- (void) setupStreams
+{
+   [service getInputStream:&istream outputStream:&ostream];
+   [istream retain];
+   [ostream retain];
+   [istream setDelegate:self];
+   [ostream setDelegate:self];
+   [istream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                      forMode:NSDefaultRunLoopMode];
+   [ostream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                      forMode:NSDefaultRunLoopMode];
+   [istream open];
+   [ostream open];
 }
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void) viewDidLoad
 {
    [super viewDidLoad];
+   [self setupStreams];
 }
 
 - (void)dealloc

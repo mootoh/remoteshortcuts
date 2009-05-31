@@ -13,7 +13,7 @@
 @implementation RemoteShortcutsIPhoneAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize navigationController;
 @synthesize services;
 
 - (void) findPeers
@@ -29,18 +29,26 @@
 {
    [self findPeers];
    // Override point for customization after app launch    
-   [window addSubview:viewController.view];
+   [window addSubview:navigationController.view];
    [window makeKeyAndVisible];
 }
 
 - (void) dealloc
 {
-   [viewController release];
+   [navigationController release];
    [window release];
    [super dealloc];
 }
 
 #pragma mark netServiceBrowser
+
+- (void) updatePeers
+{
+   if ([navigationController.topViewController isKindOfClass:[PeerFindViewController class]]) {
+      PeerFindViewController *pfvc = (PeerFindViewController *)navigationController.topViewController;
+      [pfvc.table_view reloadData];
+   }
+}   
 
 // This object is the delegate of its NSNetServiceBrowser object. We're only interested in services-related methods, so that's what we'll call.
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
@@ -48,16 +56,16 @@
    aNetService.delegate = self;
    [services addObject:aNetService];
    [aNetService resolveWithTimeout:5.0];
-   
-   PeerFindViewController *pfvc = [[PeerFindViewController alloc] initWithNibName:@"PeerFindView" bundle:nil];
-   [window addSubview:pfvc.view];
-   //[pfvc release];
+ 
+   [self updatePeers];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
    NSLog(@"didRemove");
    [services removeObject:aNetService];
    aNetService.delegate = nil;
+
+   [self updatePeers];
 }
 
 @end

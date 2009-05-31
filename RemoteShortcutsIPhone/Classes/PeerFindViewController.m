@@ -8,23 +8,11 @@
 
 #import "PeerFindViewController.h"
 #import "RemoteShortcutsIPhoneAppDelegate.h"
+#import "RemoteShortcutsIPhoneViewController.h"
 
 @implementation PeerFindViewController
 
-- (void) setupStreams:(NSNetService *) service
-{
-   [service getInputStream:&istream outputStream:&ostream];
-   [istream retain];
-   [ostream retain];
-   [istream setDelegate:self];
-   [ostream setDelegate:self];
-   [istream scheduleInRunLoop:[NSRunLoop currentRunLoop]
-                      forMode:NSDefaultRunLoopMode];
-   [ostream scheduleInRunLoop:[NSRunLoop currentRunLoop]
-                      forMode:NSDefaultRunLoopMode];
-   [istream open];
-   [ostream open];
-}
+@synthesize table_view;
 
 /*
 - (void) loadView
@@ -82,6 +70,10 @@
    return app.services.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+   return section == 0 ? @"Peers" : nil;
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +97,11 @@
 {
    RemoteShortcutsIPhoneAppDelegate *app = (RemoteShortcutsIPhoneAppDelegate *)[[UIApplication sharedApplication] delegate];
    NSNetService *service = [app.services objectAtIndex:indexPath.row];
-   
+   RemoteShortcutsIPhoneViewController *rsivc = [[RemoteShortcutsIPhoneViewController alloc] initWithNibName:@"RemoteShortcutsIPhoneViewController" bundle:nil];
+   rsivc.service = service;
+   [self.navigationController pushViewController:rsivc animated:YES];
+   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
    // Navigation logic may go here. Create and push another view controller.
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];

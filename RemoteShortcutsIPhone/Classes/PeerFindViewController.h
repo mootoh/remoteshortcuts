@@ -11,7 +11,9 @@
    NSInputStream  *istream;
    NSOutputStream *ostream;
 
-   IBOutlet UILabel * messageLabel;
+   IBOutlet UILabel *messageLabel;
+   IBOutlet UITableView *table_view;
 }
 
+@property (nonatomic, retain) IBOutlet UITableView *table_view;
 @end

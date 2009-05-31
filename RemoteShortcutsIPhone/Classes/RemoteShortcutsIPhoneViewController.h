@@ -10,7 +10,10 @@
 {
    NSInputStream  *istream;
    NSOutputStream *ostream;
+   NSNetService *service;
 }
+
+@property (nonatomic, retain) NSNetService *service;
 
 - (IBAction) shortcutCopy;
 - (IBAction) shortcutPaste;

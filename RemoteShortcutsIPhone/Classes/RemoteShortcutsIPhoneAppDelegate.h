@@ -6,17 +6,15 @@
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
-@class RemoteShortcutsIPhoneViewController;
-
 @interface RemoteShortcutsIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
    UIWindow *window;
-   RemoteShortcutsIPhoneViewController *viewController;
+   UINavigationController *navigationController;
 
    NSNetServiceBrowser *browser;
    NSMutableArray *services;   
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet RemoteShortcutsIPhoneViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSMutableArray *services;
 @end
