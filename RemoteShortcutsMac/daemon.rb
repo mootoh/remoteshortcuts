@@ -18,11 +18,11 @@ class Daemon < OSX::NSObject
 
    def toggle(sender)
       if @is_working
-         @menu.setTitle 'OFF'
+         @menu.setImage icon_images[1]
          @menu.setToolTip 'RemoteShortcuts is OFF'
          sender.setTitle 'ON'
       else
-         @menu.setTitle 'ON'
+         @menu.setImage icon_images[0]
          @menu.setToolTip 'RemoteShortcuts is ON'
          sender.setTitle 'OFF'
       end
@@ -32,12 +32,26 @@ class Daemon < OSX::NSObject
    ib_action :quit
    ib_action :toggle
 
+   def icon_images
+      unless @s_icon_images
+         bundle = OSX::NSBundle::mainBundle;
+         
+         paths = [
+            bundle.pathForResource_ofType("activated", "png"),
+            bundle.pathForResource_ofType("deactivated", "png")]
+         @s_icon_images = paths.collect do |path|
+            OSX::NSImage.alloc.initByReferencingFile(path)
+         end
+      end
+      return @s_icon_images
+   end
+
    def applicationDidFinishLaunching(notification)
       @is_working = true
 
       bar = OSX::NSStatusBar.systemStatusBar
-      @menu = bar.statusItemWithLength(OSX::NSVariableStatusItemLength).retain
-      @menu.setTitle('RemoteShortcuts')
+      @menu = bar.statusItemWithLength(24).retain
+      @menu.setImage(icon_images[0])
       @menu.setToolTip('Hello!')
       @menu.setHighlightMode true
       @menu.setMenu @menus
