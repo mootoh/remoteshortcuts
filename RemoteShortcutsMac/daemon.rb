@@ -18,10 +18,13 @@ class Daemon < OSX::NSObject
 
    def toggle(sender)
       if @is_working
+         @net_service.stop
          @menu.setImage icon_images[1]
          @menu.setToolTip 'RemoteShortcuts is OFF'
          sender.setTitle 'ON'
+
       else
+         @net_service.publish
          @menu.setImage icon_images[0]
          @menu.setToolTip 'RemoteShortcuts is ON'
          sender.setTitle 'OFF'
@@ -52,7 +55,7 @@ class Daemon < OSX::NSObject
       bar = OSX::NSStatusBar.systemStatusBar
       @menu = bar.statusItemWithLength(24).retain
       @menu.setImage(icon_images[0])
-      @menu.setToolTip('Hello!')
+      @menu.setToolTip('RemoteShortcuts')
       @menu.setHighlightMode true
       @menu.setMenu @menus
 

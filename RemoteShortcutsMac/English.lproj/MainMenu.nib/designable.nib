@@ -42,27 +42,19 @@
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSMenuItem" id="297912643">
-						<reference key="NSMenu" ref="1069758364"/>
-						<string key="NSTitle">toggle</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="743732640">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="955832500">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
-					</object>
 					<object class="NSMenuItem" id="21336413">
 						<reference key="NSMenu" ref="1069758364"/>
 						<string key="NSTitle">quit</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="743732640"/>
-						<reference key="NSMixedImage" ref="955832500"/>
+						<object class="NSCustomResource" key="NSOnImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
 					</object>
 				</object>
 			</object>
@@ -77,14 +69,6 @@
 						<reference key="destination" ref="1069758364"/>
 					</object>
 					<int key="connectionID">384</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggle:</string>
-						<reference key="source" ref="449970734"/>
-						<reference key="destination" ref="297912643"/>
-					</object>
-					<int key="connectionID">385</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -142,15 +126,9 @@
 						<reference key="object" ref="1069758364"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="297912643"/>
 							<reference ref="21336413"/>
 						</object>
 						<reference key="parent" ref="1049"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">381</int>
-						<reference key="object" ref="297912643"/>
-						<reference key="parent" ref="1069758364"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">382</int>
@@ -169,7 +147,6 @@
 					<string>379.IBPluginDependency</string>
 					<string>380.IBEditorWindowLastContentRect</string>
 					<string>380.IBPluginDependency</string>
-					<string>381.IBPluginDependency</string>
 					<string>382.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -178,8 +155,7 @@
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{21, 668}, {99, 43}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{21, 688}, {82, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
