@@ -19,6 +19,7 @@
 		922CC27E0FCDA69C005B2A92 /* AEDescUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */; };
 		922CC27F0FCDA69C005B2A92 /* AEDescUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */; };
 		92A140820FCEF7EC00284DAC /* ShortcutHandler.scpt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 922CC2410FCD9C6F005B2A92 /* ShortcutHandler.scpt */; };
+		B9C63CAF0FD270D0000C04DE /* Icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = B9C63CAE0FD270D0000C04DE /* Icons.icns */; };
 		B9ECD87F0FD26C05005AF57C /* activated.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECD87D0FD26C05005AF57C /* activated.png */; };
 		B9ECD8800FD26C05005AF57C /* deactivated.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECD87E0FD26C05005AF57C /* deactivated.png */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		922CC2710FCDA182005B2A92 /* TCallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCallScript.m; sourceTree = "<group>"; };
 		922CC27C0FCDA69C005B2A92 /* AEDescUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEDescUtils.h; sourceTree = "<group>"; };
 		922CC27D0FCDA69C005B2A92 /* AEDescUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEDescUtils.m; sourceTree = "<group>"; };
+		B9C63CAE0FD270D0000C04DE /* Icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icons.icns; sourceTree = "<group>"; };
 		B9ECD87D0FD26C05005AF57C /* activated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activated.png; sourceTree = "<group>"; };
 		B9ECD87E0FD26C05005AF57C /* deactivated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deactivated.png; sourceTree = "<group>"; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
@@ -131,6 +133,7 @@
 			children = (
 				B9ECD87D0FD26C05005AF57C /* activated.png */,
 				B9ECD87E0FD26C05005AF57C /* deactivated.png */,
+				B9C63CAE0FD270D0000C04DE /* Icons.icns */,
 				4DDCA7110ACC9A6100E082CE /* Info.plist */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -222,6 +225,7 @@
 				922CC2480FCD9D62005B2A92 /* daemon.rb in Resources */,
 				B9ECD87F0FD26C05005AF57C /* activated.png in Resources */,
 				B9ECD8800FD26C05005AF57C /* deactivated.png in Resources */,
+				B9C63CAF0FD270D0000C04DE /* Icons.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
