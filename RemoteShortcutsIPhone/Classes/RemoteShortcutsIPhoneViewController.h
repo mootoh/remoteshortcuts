@@ -10,12 +10,9 @@
 {
    NSInputStream  *istream;
    NSOutputStream *ostream;
-   NSNetServiceBrowser *browser;
-   NSMutableArray *services;
 }
 
 - (IBAction) shortcutCopy;
 - (IBAction) shortcutPaste;
-- (IBAction) setupPeers;
 
 @end

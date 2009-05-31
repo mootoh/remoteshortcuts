@@ -15,6 +15,8 @@
 		2899E5220DE3E06400AC0155 /* RemoteShortcutsIPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* RemoteShortcutsIPhoneViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* RemoteShortcutsIPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RemoteShortcutsIPhoneViewController.m */; };
+		B9ECD5EF0FD240AA005AF57C /* PeerFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECD5EE0FD240AA005AF57C /* PeerFindViewController.m */; };
+		B9ECD5FA0FD2465A005AF57C /* PeerFindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9ECD5F90FD2465A005AF57C /* PeerFindView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RemoteShortcutsIPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteShortcutsIPhone_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RemoteShortcutsIPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RemoteShortcutsIPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B9ECD5ED0FD240AA005AF57C /* PeerFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerFindViewController.h; sourceTree = "<group>"; };
+		B9ECD5EE0FD240AA005AF57C /* PeerFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerFindViewController.m; sourceTree = "<group>"; };
+		B9ECD5F90FD2465A005AF57C /* PeerFindView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PeerFindView.xib; path = Classes/PeerFindView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +59,8 @@
 				1D3623250D0F684500981E51 /* RemoteShortcutsIPhoneAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* RemoteShortcutsIPhoneViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* RemoteShortcutsIPhoneViewController.m */,
+				B9ECD5ED0FD240AA005AF57C /* PeerFindViewController.h */,
+				B9ECD5EE0FD240AA005AF57C /* PeerFindViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -91,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2899E5210DE3E06400AC0155 /* RemoteShortcutsIPhoneViewController.xib */,
+				B9ECD5F90FD2465A005AF57C /* PeerFindView.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* RemoteShortcutsIPhone-Info.plist */,
 			);
@@ -151,6 +159,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* RemoteShortcutsIPhoneViewController.xib in Resources */,
+				B9ECD5FA0FD2465A005AF57C /* PeerFindView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +173,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* RemoteShortcutsIPhoneAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* RemoteShortcutsIPhoneViewController.m in Sources */,
+				B9ECD5EF0FD240AA005AF57C /* PeerFindViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
