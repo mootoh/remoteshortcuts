@@ -18,10 +18,8 @@
    [ostream retain];
    [istream setDelegate:self];
    [ostream setDelegate:self];
-   [istream scheduleInRunLoop:[NSRunLoop currentRunLoop]
-                      forMode:NSDefaultRunLoopMode];
-   [ostream scheduleInRunLoop:[NSRunLoop currentRunLoop]
-                      forMode:NSDefaultRunLoopMode];
+   [istream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+   [ostream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
    [istream open];
    [ostream open];
 }

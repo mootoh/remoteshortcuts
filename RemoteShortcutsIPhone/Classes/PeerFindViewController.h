@@ -8,9 +8,6 @@
 
 @interface PeerFindViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-   NSInputStream  *istream;
-   NSOutputStream *ostream;
-
    IBOutlet UILabel *messageLabel;
    IBOutlet UITableView *table_view;
 }

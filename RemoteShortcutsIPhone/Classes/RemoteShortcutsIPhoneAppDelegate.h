@@ -9,7 +9,6 @@
 @interface RemoteShortcutsIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
    UIWindow *window;
    UINavigationController *navigationController;
-
    NSNetServiceBrowser *browser;
    NSMutableArray *services;   
 }

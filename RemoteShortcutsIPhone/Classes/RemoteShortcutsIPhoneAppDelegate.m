@@ -21,14 +21,12 @@
    browser = [[NSNetServiceBrowser alloc] init];
    services = [[NSMutableArray array] retain];
    [browser setDelegate:self];
-   
    [browser searchForServicesOfType:@"_wwdcpic._tcp." inDomain:@""];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
    [self findPeers];
-   // Override point for customization after app launch    
    [window addSubview:navigationController.view];
    [window makeKeyAndVisible];
 }
@@ -67,9 +65,8 @@
 
    if ([navigationController.topViewController isKindOfClass:[RemoteShortcutsIPhoneViewController class]]) {
       RemoteShortcutsIPhoneViewController *rsipvc = (RemoteShortcutsIPhoneViewController *)navigationController.topViewController;
-      if ([aNetService isEqual:rsipvc.service]) {
+      if ([aNetService isEqual:rsipvc.service])
          [navigationController popViewControllerAnimated:YES];
-      }
    }
    [self updatePeers];
 }
